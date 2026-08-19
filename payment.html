@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Complete Your Payment</h2>
+
+<div class="plan-card">
+
+<h3 id="planName"></h3>
+
+<p id="planPrice"></p>
+
+<hr>
+
+<p><strong>Network:</strong> BEP20 (BSC)</p>
+
+<p><strong>Wallet Address</strong></p>
+
+<textarea id="walletAddress" readonly>
+0x9D378cC1F4Ee18690eE591c203Ee63ff66903974
+</textarea>
+
+<br><br>
+
+<button id="copyBtn">
+Copy Address
+</button>
+
+<br><br>
+
+<button id="paidBtn">
+I've Paid
+</button>
+
+</div>
+
+</div>
+
+<nav class="bottom-nav">
+
+<a href="index.html">
+🏠<br>Home
+</a>
+
+<a href="plans.html">
+📦<br>Plans
+</a>
+
+<a href="mining.html">
+⛏<br>Mining
+</a>
+
+<a href="wallet.html">
+👛<br>Wallet
+</a>
+
+<a href="referral.html">
+👥<br>Referral
+</a>
+
+</nav>
+
+<script>
+
+const params=new URLSearchParams(location.search);
+
+const plan=params.get("plan");
+
+const data={
+
+basic:{name:"Basic",price:"130 USDT"},
+
+starter:{name:"Starter",price:"320 USDT"},
+
+pro:{name:"Pro",price:"590 USDT"},
+
+advanced:{name:"Advanced",price:"540 USDT"},
+
+premium:{name:"Premium",price:"860 USDT"},
+
+elite:{name:"Elite",price:"860 USDT"},
+
+vip:{name:"VIP",price:"1040 USDT"}
+
+};
+
+if(data[plan]){
+
+document.getElementById("planName").innerHTML=data[plan].name;
+
+document.getElementById("planPrice").innerHTML=data[plan].price;
+
+}
+
+copyBtn.onclick=()=>{
+
+navigator.clipboard.writeText(walletAddress.value);
+
+alert("Wallet Copied");
+
+};
+
+
+</script>
+<script type="module" src="payment.js"></script>
+
+</body>
+</html>
